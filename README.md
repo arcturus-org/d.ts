@@ -2,7 +2,7 @@
 
 <div align="center">
   <h1>d.ts</h1>
-  <div>记录一些常用的 typescript 声明文件</div>
+  <div>记录一些常用的 typescript 声明文件( 非官方 )</div>
 </div>
 
 ## catalogue
