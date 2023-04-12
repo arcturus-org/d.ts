@@ -1,32 +1,10 @@
-# 腾讯地图 SDK 声明文件
+<img src="/assets/typescript.png" width="144" height="144" alt="logo" align="right" />
 
-可能有些不全, 或者有些可空的属性写成必须的 ˋ( ° ▽、° ) 等发现了再改吧
+<div align="center">
+  <h1>d.ts</h1>
+  <div>记录一些常用的 typescript 声明文件</div>
+</div>
 
-各位有需要的可以 fork 一份把自己需要的部分补上再 pr 给我呀 ( •̀ ω •́ )✧
+## catalogue
 
-写的比较菜 （ ; ´д｀）ゞ
-
-## 使用
-
-```bash
-pnpm i -D qqmap-gl-typings
-```
-
-在 d.ts 文件中引入
-
-```ts
-/// <reference types="qqmap-gl-typings" />
-```
-
-```ts
-// 中心点坐标
-const center = new TMap.LatLng(latitude, longitude);
-// 初始化地图
-const map = new TMap.Map(dom ?? 'map', {
-    center,
-    zoom: 14, // 缩放比例
-    viewMode: '2D', // 显示模式
-});
-
-// 其他...
-```
+- [腾讯地图 SDK](./qqMap)
