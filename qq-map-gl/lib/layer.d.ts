@@ -1,84 +1,293 @@
 declare namespace TMap {
-  class ImageTileLayer {
-    constructor(options: ImageTileLayerOptions); //
-    getId(): ImageTileLayer; // 获取图层的id
-    setMap(map: Map | null): ImageTileLayer; // 设置展示图层的地图对象
-    setVisible(visible: boolean): ImageTileLayer; // 设置图层是否可见
-    setZIndex(zIndex: number): ImageTileLayer; // 设置图层绘制顺序
-    setOpacity(opacity: number): ImageTileLayer; // 设置图层透明度
+  /**
+   * 用于创建自定义栅格瓦片图层
+   */
+  class ImageTileLayer implements ImageTileLayerOptions {
+    constructor(options: ImageTileLayerOptions);
+
+    /**
+     * 获取图层的 id
+     */
+    getId(): this;
+
+    /**
+     * 设置展示图层的地图对象
+     */
+    setMap(map: Map | null): this;
+
+    /**
+     * 设置图层是否可见
+     */
+    setVisible(visible: boolean): this;
+
+    /**
+     * 设置图层绘制顺序
+     */
+    setZIndex(zIndex: number): this;
+
+    /**
+     * 设置图层透明度
+     */
+    setOpacity(opacity: number): this;
+
+    /**
+     * 创建个性化图层平台配置的个性化图层
+     */
     static createCustomLayer(
       options: CustomLayerOptions
-    ): Promise<ImageTileLayer>; // 创建个性化图层平台配置的个性化图层
+    ): Promise<ImageTileLayer>;
   }
 
-  class WMSLayer {
+  /**
+   * 用于创建基于 OGC 标准的 WMS 地图服务的图层类,
+   * 仅支持 EPSG3857 坐标系统的WMS图层
+   */
+  class WMSLayer implements WMSLayerOptions {
     constructor(options: WMSLayerOptions);
-    setMap(map: Map | null): WMSLayer; // 设置展示图层的地图对象
-    setVisible(visible: boolean): WMSLayer; // 设置图层是否可见
-    setZIndex(zIndex: number): WMSLayer; // 设置图层绘制顺序
-    setOpacity(opacity: number): WMSLayer; // 设置图层透明度
+
+    /**
+     * 设置展示图层的地图对象
+     */
+    setMap(map: Map | null): this;
+
+    /**
+     * 设置图层是否可见
+     */
+    setVisible(visible: boolean): this;
+
+    /**
+     * 设置图层绘制顺序
+     */
+    setZIndex(zIndex: number): this;
+
+    /**
+     * 设置图层透明度
+     */
+    setOpacity(opacity: number): this;
   }
 
   interface WMSParams {
-    layers: string; // 请求的图层名称
-    version?: string; // 请求的WMS的版本号
+    /**
+     * 请求的图层名称
+     */
+    layers: string;
+
+    /**
+     * 请求的 WMS 的版本号
+     */
+    version?: string;
   }
 
-  class WMTSLayer {
+  /**
+   * 用于创建基于 OGC 标准的 WMTS 地图服务的图层类,
+   * 仅支持 EPSG3857 坐标系统的 WMTS 图层
+   */
+  class WMTSLayer implements WMTSLayerOptions {
     constructor(options: WMTSLayerOptions);
-    setMap(map: Map | null): WMTSLayer; // 设置展示图层的地图对象
-    setVisible(visible: boolean): WMTSLayer; // 设置图层是否可见
-    setZIndex(zIndex: number): WMTSLayer; // 设置图层绘制顺序
-    setOpacity(opacity: number): WMTSLayer; // 设置图层透明度
+
+    /**
+     * 设置展示图层的地图对象
+     */
+    setMap(map: Map | null): this;
+
+    /**
+     * 设置图层是否可见
+     */
+    setVisible(visible: boolean): this;
+
+    /**
+     * 设置图层绘制顺序
+     */
+    setZIndex(zIndex: number): this;
+
+    /**
+     * 设置图层透明度
+     */
+    setOpacity(opacity: number): this;
   }
 
   interface WMTSParams {
-    layer: string; // 请求的图层名称
-    tileMatrixSet: string; // 瓦片矩阵数据集
-    version?: string; // 请求的WMTS的版本号
+    /**
+     * 请求的图层名称
+     */
+    layer: string;
+
+    /**
+     * 瓦片矩阵数据集
+     */
+    tileMatrixSet: string;
+
+    /**
+     * 请求的 WMTS 的版本号
+     */
+    version?: string;
   }
 
-  class ImageGroundLayer {
+  /**
+   * 用于创建自定义图片图层, 图片会随着地图缩放而缩放
+   */
+  class ImageGroundLayer implements ImageGroundLayerOptions {
     constructor(options: ImageGroundLayerOptions);
-    setMap(map: Map): ImageGroundLayer; // 设置展示图层的地图对象
-    setBounds(bounds: LatLngBounds): ImageGroundLayer; // 设置展示图层的地理范围
-    setVisible(visible: boolean): ImageGroundLayer; // 设置图层是否可见
-    setZIndex(zIndex: number): ImageGroundLayer; // 设置图层绘制顺序
-    setOpacity(opacity: number): ImageGroundLayer; // 设置图层透明度
-    setSrc(src: string): ImageGroundLayer; // 更新图层资源路径, 相同的 url 不会被更新
-    getMap(): Map | null; // 获取地图对象, 若无返回 null
-    getId(): ImageGroundLayer; // 获取图层的 id
-    getBounds(): LatLngBounds; // 获取展示图层的地理范围
+
+    /**
+     * 设置展示图层的地图对象
+     */
+    setMap(map: Map): this;
+
+    /**
+     * 设置展示图层的地理范围
+     */
+    setBounds(bounds: LatLngBounds): this;
+
+    /**
+     * 设置图层是否可见
+     */
+    setVisible(visible: boolean): this;
+
+    /**
+     * 设置图层绘制顺序
+     */
+    setZIndex(zIndex: number): this;
+
+    /**
+     * 设置图层透明度
+     */
+    setOpacity(opacity: number): this;
+
+    /**
+     * 更新图层资源路径, 相同的 url 不会被更新
+     */
+    setSrc(src: string): this;
+
+    /**
+     * 获取地图对象, 若无返回 null
+     */
+    getMap(): Map | null;
+
+    /**
+     * 获取图层的 id
+     */
+    getId(): this;
+
+    /**
+     * 获取展示图层的地理范围
+     */
+    getBounds(): LatLngBounds;
   }
 
-  class CanvasGroundLayer {
+  /**
+   * 用于创建自定义图片图层, 图片会随着地图缩放而缩放
+   */
+  class CanvasGroundLayer implements CanvasGroundLayerOptions {
     constructor(options: CanvasGroundLayerOptions);
-    setMap(map: Map): CanvasGroundLayer; // 设置展示图层的地图对象
-    setBounds(bounds: LatLngBounds): CanvasGroundLayer; // 设置展示图层的地理范围
-    setVisible(visible: boolean): CanvasGroundLayer; // 设置图层是否可见
-    setZIndex(zIndex: number): CanvasGroundLayer; // 设置图层绘制顺序
-    setOpacity(opacity: number): CanvasGroundLayer; // 设置图层透明度
-    setCanvas(canvas: HTMLCanvasElement): CanvasGroundLayer; // 更新 canvas 元素, 同一个 canvas 不会被重复更新
-    refresh(): null; // 刷新 canvas, 当 canvas 图像内容改变时调用, 否则 canvas 的内容不会更新到地图上
-    getMap(): Map | null; // 获取地图对象, 若无返回 null
-    getId(): CanvasGroundLayer; // 获取图层的 id
-    getBounds(): LatLngBounds; // 获取展示图层的地理范围
+
+    /**
+     * 设置展示图层的地图对象
+     */
+    setMap(map: Map): this;
+
+    /**
+     * 设置展示图层的地理范围
+     */
+    setBounds(bounds: LatLngBounds): this;
+
+    /**
+     * 设置图层是否可见
+     */
+    setVisible(visible: boolean): this;
+
+    /**
+     * 设置图层绘制顺序
+     */
+    setZIndex(zIndex: number): this;
+
+    /**
+     * 设置图层透明度
+     */
+    setOpacity(opacity: number): this;
+
+    /**
+     * 更新 canvas 元素, 同一个 canvas 不会被重复更新
+     */
+    setCanvas(canvas: HTMLCanvasElement): this;
+
+    /**
+     * 刷新 canvas, 当 canvas 图像内容改变时调用, 否则 canvas 的内容不会更新到地图上
+     */
+    refresh(): null;
+
+    /**
+     * 获取地图对象, 若无返回 null
+     */
+    getMap(): Map | null;
+
+    /**
+     * 获取图层的 id
+     */
+    getId(): this;
+
+    /**
+     * 获取展示图层的地理范围
+     */
+    getBounds(): LatLngBounds;
   }
 
-  class MaskLayer {
+  /**
+   * 用于创建遮罩图层, 其覆盖区域内 3D 建筑及 POI 将不显示, 可配合自定义图层进行使用
+   */
+  class MaskLayer implements MaskLayerOptions {
     constructor(options: MaskLayerOptions);
-    add(geometries: MaskGeometry[]): MaskLayer; // 新增遮罩区域, 可批量添加
-    update(geometries: MaskGeometry[]): MaskLayer; // 更新遮罩区域数据, 已存在id则更新已有数据, 若不存在则添加数据
-    get(id: string): MaskGeometry; // 获取指定遮罩区域
-    getAll(): MaskGeometry[]; // 获取图层内所有遮罩区域
-    remove(ids: string[]): MaskLayer; // 删除指定遮罩区域
-    clear(): MaskLayer; // 清除所有遮罩区域
-    setMap(map: Map | null): MaskLayer; // 设置图层绑定的地图对象, 若为 null 则将其从地图中移除
-    getMap(): Map | null; // 获取地图对象, 若为空则返回 null
+
+    /**
+     * 新增遮罩区域, 可批量添加
+     */
+    add(geometries: MaskGeometry[]): this;
+
+    /**
+     * 更新遮罩区域数据, 已存在id则更新已有数据, 若不存在则添加数据
+     */
+    update(geometries: MaskGeometry[]): this;
+
+    /**
+     * 获取指定遮罩区域
+     */
+    get(id: string): MaskGeometry;
+
+    /**
+     * 获取图层内所有遮罩区域
+     */
+    getAll(): MaskGeometry[];
+
+    /**
+     * 删除指定遮罩区域
+     */
+    remove(ids: string[]): this;
+
+    /**
+     * 清除所有遮罩区域
+     */
+    clear(): this;
+
+    /**
+     * 设置图层绑定的地图对象, 若为 null 则将其从地图中移除
+     */
+    setMap(map: Map | null): this;
+
+    /**
+     * 获取地图对象, 若为空则返回 null
+     */
+    getMap(): Map | null;
   }
 
   interface MaskGeometry {
-    id: string; // 唯一标识
-    paths: LatLng[]; // 遮罩轮廓线坐标点串
+    /**
+     * 唯一标识
+     */
+    id: string;
+
+    /**
+     * 遮罩轮廓线坐标点串
+     */
+    paths: LatLng[];
   }
 }
