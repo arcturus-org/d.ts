@@ -7,4 +7,4 @@
 
 ## catalogue
 
-- [腾讯地图 SDK](./qqMap)
+- [腾讯地图 SDK](./qq-map-gl)
