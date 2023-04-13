@@ -1,19 +1,21 @@
 {
-  "name": "qqmap-gl-typings",
-  "version": "1.0.1",
-  "description": "腾讯地图 GL SDK 声明文件",
+  "name": "qqmap-typings",
+  "version": "1.0.0",
+  "description": "腾讯地图声明文件",
   "main": "index.d.ts",
   "types": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint --config .eslintrc.js lib/**/*.ts"
   },
-  "homepage": "https://github.com/ICE99125/qqMap/blob/main/README.md",
+  "homepage": "https://github.com/arcturus-org/d.ts/blob/main/qqMap/README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ICE99125/qqMap.git"
+    "url": "git+https://github.com/arcturus-org/d.ts.git"
   },
-  "keywords": ["腾讯地图"],
+  "keywords": [
+    "腾讯地图"
+  ],
   "author": "ARCTURUS <1638330246@qq.com>",
   "license": "MIT",
   "devDependencies": {
