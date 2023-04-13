@@ -1,15 +1,19 @@
-# 腾讯地图 SDK 声明文件
+# 腾讯地图声明文件
+
+## 官方文档地址
+
+[点击进入](https://lbs.qq.com/webApi/javascriptGL/glGuide/glOverview)
 
 ## 使用
 
 ```bash
-pnpm i -D qqmap-gl-typings
+pnpm i -D qqmap-typings
 ```
 
 在 d.ts 文件中引入
 
 ```ts
-/// <reference types="qqmap-gl-typings" />
+/// <reference types="qqmap-typings" />
 ```
 
 ```ts
