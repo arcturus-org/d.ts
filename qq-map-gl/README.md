@@ -28,3 +28,8 @@ const map = new TMap.Map(dom ?? 'map', {
 
 // 其他...
 ```
+
+## TODO
+
+- [x] 基本属性
+- [ ] 附加工具
