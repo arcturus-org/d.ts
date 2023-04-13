@@ -39,126 +39,291 @@ declare namespace TMap {
 
   type LoopEvtName = 'animation_looped';
 
-  // docs: https://lbs.qq.com/webApi/javascriptGL/glDoc/docIndexMap#1
+  /**
+   * API 中的核心类， 用于创建地图实例
+   * docs: https://lbs.qq.com/webApi/javascriptGL/glDoc/docIndexMap#1
+   */
   class Map implements MapOptions {
     constructor(dom: string | HTMLElement, options: MapOptions);
 
-    setCenter(center: LatLng): Map;
+    /**
+     * 设置地图中心点
+     */
+    setCenter(center: LatLng): this;
 
-    setZoom(zoom: number): Map;
+    /**
+     * 设置地图缩放级别
+     */
+    setZoom(zoom: number): this;
 
-    setRotation(rotation: number): Map;
+    /**
+     * 设置地图水平面上的旋转角度
+     */
+    setRotation(rotation: number): this;
 
-    setPitch(pitch: number): Map;
+    /**
+     * 设置地图俯仰角
+     */
+    setPitch(pitch: number): this;
 
-    setScale(scale: number): Map;
+    /**
+     * 设置地图显示比例
+     */
+    setScale(scale: number): this;
 
-    setOffset(offset: { x: number; y: number }): Map;
+    /**
+     * 设置地图与容器偏移量, x 方向向右偏移为正值, y 方向向下偏移为正值
+     */
+    setOffset(offset: { x: number; y: number }): this;
 
-    setDraggable(draggable: boolean): Map;
+    /**
+     * 设置地图是否支持拖拽
+     */
+    setDraggable(draggable: boolean): this;
 
-    setScrollable(scrollable: boolean): Map;
+    /**
+     * 设置地图是否支持滚轮缩放
+     */
+    setScrollable(scrollable: boolean): this;
 
-    setMaxZoom(maxZoom: number): Map;
+    /**
+     * 设置地图最大缩放级别, 支持 3~20
+     */
+    setMaxZoom(maxZoom: number): this;
 
-    setMinZoom(minZoom: number): Map;
+    /**
+     * 设置地图最小缩放级别, 支持 3~20
+     */
+    setMinZoom(minZoom: number): this;
 
-    setPitchable(pitchable: boolean): Map;
+    /**
+     * 设置地图是否支持改变俯仰角度, 在 2D 视图下, 此方法无效
+     */
+    setPitchable(pitchable: boolean): this;
 
-    setRotatable(rotatable: boolean): Map;
+    /**
+     * 设置地图是否支持改变旋转角度, 在 2D 视图下, 此方法无效
+     */
+    setRotatable(rotatable: boolean): this;
 
-    setDoubleClickZoom(doubleClickZoom: boolean): Map;
+    /**
+     * 设置地图是否支持双击缩放
+     */
+    setDoubleClickZoom(doubleClickZoom: boolean): this;
 
-    setBoundary(boundary: LatLngBounds): Map;
+    /**
+     * 设置地图限制边界, 拖拽、缩放等操作无法将地图移动至边界外
+     */
+    setBoundary(boundary: LatLngBounds): this;
 
-    setViewMode(viewMode: string): Map;
+    /**
+     * 设置地图视图模式
+     */
+    setViewMode(viewMode: string): this;
 
-    setBaseMap(baseMap: BaseMap | BaseMap[]): Map;
+    /**
+     * 动态设置地图底图
+     */
+    setBaseMap(baseMap: BaseMap | BaseMap[]): this;
 
-    setMapStyleId(mapStyleId: string): Map;
+    /**
+     * 动态设置个性化地图样式
+     */
+    setMapStyleId(mapStyleId: string): this;
 
-    panTo(latLng: LatLng, opts: EaseOptions): Map;
+    /**
+     * 将地图中心平滑移动到指定的经纬度坐标
+     */
+    panTo(latLng: LatLng, opts: EaseOptions): this;
 
-    zoomTo(zoom: number, opts: EaseOptions): Map;
+    /**
+     * 平滑缩放到指定级别
+     */
+    zoomTo(zoom: number, opts: EaseOptions): this;
 
-    rotateTo(rotation: number, opts: EaseOptions): Map;
+    /**
+     * 平滑旋转到指定角度
+     */
+    rotateTo(rotation: number, opts: EaseOptions): this;
 
-    pitchTo(pitch: number, opts: EaseOptions): Map;
+    /**
+     * 平滑变化到指定俯仰角度
+     */
+    pitchTo(pitch: number, opts: EaseOptions): this;
 
-    easeTo(mapStatus: object, opts: EaseOptions): Map;
+    /**
+     * 平滑过渡到指定状态
+     */
+    easeTo(mapStatus: Record<string, any>, opts: EaseOptions): this;
 
-    fitBounds(bounds: LatLngBounds, options: FitBoundsOptions): Map;
+    /**
+     * 根据指定的地理范围调整地图视野
+     */
+    fitBounds(bounds: LatLngBounds, options: FitBoundsOptions): this;
 
+    /**
+     * 获取地图中心
+     */
     getCenter(): LatLng;
 
+    /**
+     * 获取地图缩放级别
+     */
     getZoom(): number;
 
+    /**
+     * 获取地图水平面上的旋转角度
+     */
     getRotation(): number;
 
+    /**
+     * 获取地图俯仰角度
+     */
     getPitch(): number;
 
+    /**
+     * 返回当前地图的视野范围
+     */
     getBounds(): LatLngBounds;
 
+    /**
+     * 获取地图显示比例
+     */
     getScale(): number;
 
+    /**
+     * 获取地图与容器的偏移量
+     */
     getOffset(): { x: number; y: number };
 
+    /**
+     * 获取地图是否支持拖拽
+     */
     getDraggable(): boolean;
 
+    /**
+     * 获取地图是否支持滚轮缩放
+     */
     getScrollable(): boolean;
 
+    /**
+     * 获取地图是否支持双击缩放
+     */
     getDoubleClickZoom(): boolean;
 
+    /**
+     * 获取地图限制边界
+     */
     getBoundary(): LatLngBounds;
 
-    addControl(control: Control): Map;
+    /**
+     * 添加控件到地图, 传入控件对象
+     */
+    addControl(control: Control): this;
 
-    removeControl(id: string): Map;
+    /**
+     * 从地图容器移出控件
+     */
+    removeControl(id: string): this;
 
+    /**
+     * 根据控件 id 获取对应的控件对象
+     */
     getControl(id: string): Control;
 
+    /**
+     * 获取地图视图模式
+     */
     getViewMode(): string;
 
+    /**
+     * 获取当前的底图类型
+     */
     getBaseMap(): BaseMap | BaseMap[];
 
+    /**
+     * 获取室内地图管理器
+     */
     getIndoorManager(): indoorManager;
 
+    /**
+     * 销毁地图
+     */
     destroy(): void;
 
+    /**
+     * 经纬度坐标转换为容器像素坐标, 容器像素坐标系以地图容器左上角点为原点
+     */
     projectToContainer(latLng: LatLng): Point;
 
+    /**
+     * 容器像素坐标转换为经纬度坐标
+     */
     unprojectFromContainer(pixel: Point): LatLng;
 
-    on(eventName: EvtName, listener: () => void): Map;
+    /**
+     * 添加 listener 到 eventName 事件的监听器数组中
+     */
+    on(eventName: EvtName, listener: () => void): this;
 
-    on(eventName: MapEvtName, listener: (evt: MapEvent) => void): Map;
+    on(eventName: MapEvtName, listener: (evt: MapEvent) => void): this;
 
-    on(eventName: AnimateEvtName, listener: (evt: AnimationEvent) => void): Map;
+    on(
+      eventName: AnimateEvtName,
+      listener: (evt: AnimationEvent) => void
+    ): this;
 
-    on(eventName: LoopEvtName, listener: (evt: number) => void): Map;
+    on(eventName: LoopEvtName, listener: (evt: number) => void): this;
 
     off(
       eventName: EvtName | MapEvtName | AnimateEvtName | LoopEvtName,
       listener: () => void
     ): Map;
 
-    moveLayer(layerId: string, level: constants.LAYER_LEVEL): Map;
+    /**
+     * 修改图层层级顺序
+     */
+    moveLayer(layerId: string, level: constants.LAYER_LEVEL): this;
 
+    /**
+     * 开始动画, 通过 keyFrames 定义关键帧
+     */
     startAnimation(keyFrames: MapKeyFrame[], opts: AnimationOptions): void;
 
+    /**
+     * 停止动画, 停止后无法通过 resumeAnimation 恢复
+     */
     stopAnimation(): void;
 
+    /**
+     * 暂停动画
+     */
     pauseAnimation(): void;
 
+    /**
+     * 恢复动画
+     */
     resumeAnimation(): void;
 
-    enableAreaHighlight(opts: highlightOptions): Map;
+    /**
+     * 启用地图区域高亮功能
+     */
+    enableAreaHighlight(opts: highlightOptions): this;
 
-    disableAreaHighlight(): Map;
+    /**
+     * 禁用地图区域高亮功能
+     */
+    disableAreaHighlight(): this;
 
-    enableAreaClip(opts: ClipOptions): Map;
+    /**
+     * 启用地图区域掩膜功能
+     */
+    enableAreaClip(opts: ClipOptions): this;
 
-    disableAreaClip(): Map;
+    /**
+     * 停用地图区域掩膜功能
+     */
+    disableAreaClip(): this;
   }
 
   /**
